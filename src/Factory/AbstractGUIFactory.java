@@ -8,7 +8,7 @@ import View.ChessPanel;
 import View.StatisticPanel;
 
 public interface AbstractGUIFactory {
-    public JFrame createEightQueenFtame();
+    public JFrame createEightQueenFrame();
     public ChessPanel createChessPanel();
     public ButtonPanel createButtonPanel();
     public SolveButtonController createSolveButtonController();
