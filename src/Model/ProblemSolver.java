@@ -6,4 +6,5 @@ import Observer.Subject;
 
 public class ProblemSolver extends Subject {
     HillClimbing hillClimbing;
+
 }
