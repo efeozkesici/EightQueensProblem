@@ -12,7 +12,7 @@ import Controller.StatisticButtonController;
 public class ButtonPanel extends JPanel{
     private static final long serialVersionUID = 3682338522785801993L;
 
-    private JButton buttonSolve = new JButton("Solve");
+    private JButton buttonSolve = new JButton("Solve it!");
     private JButton buttonStatistics = new JButton("Statistics");
 
     public ButtonPanel(){

@@ -2,15 +2,15 @@ package Factory;
 
 import Model.ProblemSolver;
 
-public class EightQueenFactory implements AbstractEightQueenFactory{
-
+public class EightQueenFactory implements AbstractEightQueenFactory {
     @Override
-    public ProblemSolver createSolution(){
+    public ProblemSolver createSolution() {
         return new ProblemSolver();
     }
 
     @Override
-    public AbstractGUIFactory createGUI(){
+    public AbstractGUIFactory createGUI() {
         return new GUIFactory();
     }
 }
+

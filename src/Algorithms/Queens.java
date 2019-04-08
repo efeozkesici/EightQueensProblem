@@ -1,52 +1,51 @@
 package Algorithms;
 
 public class Queens {
-    private int queensNumeber;
-    private int[] currentPositions = new int[]{-1, -1, -1, -1, -1, -1, -1, -1};
-    private int[] newPositions = new int[]{-1, -1, -1, -1, -1, -1, -1, -1};
+    private int NUM_QUEENS = 8;
+    private int[] currentQueensPositions = new int[] {-1, -1, -1, -1, -1, -1, -1, -1};
+    private int[] newQueensPositions = new int[] {-1, -1, -1, -1, -1, -1, -1, -1};
 
-    //generates random positions for queens
     public int generateRandomPositions() {
-        currentPositions = new int[]{-1, -1, -1, -1, -1, -1, -1, -1};
+        currentQueensPositions = new int[] {-1, -1, -1, -1, -1, -1, -1, -1};
 
-        for (int i = 0; i < queensNumeber; i++) {
+        for (int iQueen = 0; iQueen < NUM_QUEENS; iQueen++) {
             boolean repetitions = true;
 
             while (repetitions) {
-                currentPositions[i] = (int) (Math.random() * 8);
+                currentQueensPositions[iQueen] = (int) (Math.random() * 8);
 
-                if (!checkRepetitions(currentPositions)) {
+                if (!checkRepetitions(currentQueensPositions)) {
                     repetitions = false;
                 }
             }
         }
-        return calculateAttacks(currentPositions);
+
+        return calculateAttacks(currentQueensPositions);
     }
 
     public int initialState() {
         return generateRandomPositions();
     }
 
-    //calculates attack numbers on the board
     public int calculateAttacks(int[] board) {
-        int attackNumbers = 0;
+        int numAttacks = 0;
 
-        for (int i = 0; i < queensNumeber - 1; i--) {
-            for (int j = i + 1; i < queensNumeber; j++) {
-                if (board[i] == board[j]) {
-                    attackNumbers++;
-                } else if (i + board[i] == j + board[j]) {
-                    attackNumbers++;
-                } else if (i - board[i] == j - board[j]) {
-                    attackNumbers++;
+        for (int iQueen = 0; iQueen < NUM_QUEENS - 1; iQueen++) {
+            for (int iAttackingQueen = iQueen + 1; iAttackingQueen < NUM_QUEENS; iAttackingQueen++) {
+                if (board[iQueen] == board[iAttackingQueen]) {
+                    numAttacks++;
+                } else if (iQueen + board[iQueen] == iAttackingQueen + board[iAttackingQueen]) {
+                    numAttacks++;
+                } else if (iQueen - board[iQueen] == iAttackingQueen - board[iAttackingQueen]) {
+                    numAttacks++;
                 }
             }
         }
-        return attackNumbers;
+        return numAttacks;
     }
 
     public boolean checkRepetitions(int[] board) {
-        int howMany = queensNumeber;
+        int howMany = NUM_QUEENS;
 
         for (int iQueen = 0; iQueen < howMany - 1; iQueen++) {
             if (board[iQueen] == -1) {
@@ -65,46 +64,45 @@ public class Queens {
     }
 
     public void acceptSuccessor() {
-        for (int i = 0; i < queensNumeber; i++) {
-            currentPositions[i] = newPositions[i];
+        for (int iQueen = 0; iQueen < NUM_QUEENS; iQueen++) {
+            currentQueensPositions[iQueen] = newQueensPositions[iQueen];
         }
     }
 
-    //positions at board
     public int[] getCurrentPositions() {
-        if (currentPositions[0] == -1) {
-            return new int[queensNumeber];
+        if (currentQueensPositions[0] == -1) {
+            return new int[NUM_QUEENS];
         }
-        return currentPositions;
+        return currentQueensPositions;
     }
 
     public double generateBestSuccessor() {
-        for (int i = 0; i < queensNumeber; i++) {
-            newPositions[i] = currentPositions[i];
+        for (int iQueen = 0; iQueen < NUM_QUEENS; iQueen++) {
+            newQueensPositions[iQueen] = currentQueensPositions[iQueen];
         }
 
         int bestSuccessorValue = Integer.MAX_VALUE;
         int bestSuccessorColumn = 0;
         int bestSuccessorNewRow = 0;
 
-        for (int column = 0; column < queensNumeber; column++) {
-            int currentRowInTheColumn = newPositions[column];
-            for (int row = 0; row < queensNumeber; row++) {
+        for (int column = 0; column < NUM_QUEENS; column++) {
+            int currentRowInTheColumn = newQueensPositions[column];
+            for (int row = 0; row < NUM_QUEENS; row++) {
                 if (row == currentRowInTheColumn) {
                     continue;
                 }
-
-                newPositions[column] = row;
-                int attacks = calculateAttacks(newPositions);
+                newQueensPositions[column] = row;
+                int attacks = calculateAttacks(newQueensPositions);
                 if (attacks < bestSuccessorValue) {
                     bestSuccessorValue = attacks;
                     bestSuccessorColumn = column;
                     bestSuccessorNewRow = row;
                 }
-                newPositions[column] = currentRowInTheColumn;
+                newQueensPositions[column] = currentRowInTheColumn;
             }
         }
-        newPositions[bestSuccessorColumn] = bestSuccessorNewRow;
-        return  bestSuccessorValue;
+
+        newQueensPositions[bestSuccessorColumn] = bestSuccessorNewRow;
+        return bestSuccessorValue;
     }
 }

@@ -7,8 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-public class Field extends JLabel{
-
+public class Field extends JLabel {
     private static final long serialVersionUID = -7847852602183377317L;
 
     public Field(Color color) {
@@ -33,4 +32,5 @@ public class Field extends JLabel{
     public void removeQueen() {
         this.setIcon(null);
     }
+
 }

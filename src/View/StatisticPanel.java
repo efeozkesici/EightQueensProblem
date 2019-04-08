@@ -11,19 +11,18 @@ import Observer.Observer;
 import Observer.Subject;
 import Observer.NotifyAction;
 
-public class StatisticPanel extends JPanel implements Observer{
-
+public class StatisticPanel extends JPanel implements Observer {
     private static final long serialVersionUID = -2299996637736692394L;
     private JLabel[][] fields;
-    private JPanel panel = new JPanel(new GridLayout(28,3));
+    private JPanel panel = new JPanel(new GridLayout(28, 3));
     int dataCount = 1;
 
-    public StatisticPanel(){
+    public StatisticPanel() {
         this.add(panel);
         this.init();
     }
 
-    private void init(){
+    private void init() {
         this.fields = new JLabel[28][3];
         for (int r = 0; r < 28; r++) {
             for (int c = 0; c < 3; c++) {

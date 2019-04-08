@@ -7,15 +7,14 @@ import View.StatisticPanel;
 import View.ChessPanel;
 import View.ButtonPanel;
 
-public class GUIFactory implements AbstractGUIFactory{
-
+public class GUIFactory implements AbstractGUIFactory {
     @Override
-    public JFrame createEightQueenFrame(){
+    public JFrame createEightQueenFrame() {
         return new JFrame();
     }
 
     @Override
-    public ChessPanel createChessPanel(){
+    public ChessPanel createChessPanel() {
         return new ChessPanel();
     }
 

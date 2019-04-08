@@ -40,12 +40,12 @@ public class EightQueenClient {
         this.requestSolver();
     }
 
-    private void requestSolver(){
+    private void requestSolver() {
         this.solver.addObserver(this.chessPanel);
         this.solver.addObserver(this.statisticPanel);
     }
 
-    private void requestGUI(){
+    private void requestGUI() {
         this.requestEightQueenFrame();
         this.requestStatisticFrame();
     }
@@ -71,20 +71,19 @@ public class EightQueenClient {
         this.eightQueenFrame.setVisible(true);
     }
 
-    private JPanel requestRightPanel(){
+    private JPanel requestRightPanel() {
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
         rightPanel.setBorder(BorderFactory.createEmptyBorder());
+
         rightPanel.add(this.buttonPanel);
 
         return rightPanel;
     }
 
-    private void requestButtonPanel(){
+    private void requestButtonPanel() {
         this.buttonPanel.setController(this.solveButtonController, this.statisticButtonController);
         this.solveButtonController.init(this.solver);
         this.statisticButtonController.init(this.statisticFrame);
     }
-
-
 }

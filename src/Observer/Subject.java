@@ -1,34 +1,34 @@
 package Observer;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Subject {
+
     private List<Observer> observers = new ArrayList<Observer>();
-    private boolean changed; // Is tehere any update?
+    private boolean changed;
 
-    public void addObserver(Observer o){
-        if(o == null){
+    public void addObserver(Observer o) {
+        if (o == null)
             throw new NullPointerException();
-
-        }
-        if(!observers.contains(o)){
+        if (!observers.contains(o)) {
             observers.add(o);
         }
     }
 
-    public void deleteObserver(Observer o){
+    public void deleteObserver(Observer o) {
         observers.remove(o);
     }
 
-    public void clearChanged(){
+    public void clearChanged() {
         changed = false;
     }
 
-    public void setChanged(){
+    public void setChanged() {
         changed = true;
     }
 
-    public boolean hasChanged(){
+    public boolean hasChanged() {
         return changed;
     }
 
@@ -40,8 +40,8 @@ public class Subject {
         notifyAllObservers(null);
     }
 
-    public void notifyAllObservers(NotifyAction action){
-        if(!hasChanged()){
+    public void notifyAllObservers(NotifyAction action) {
+        if (!hasChanged()) {
             return;
         }
         clearChanged();

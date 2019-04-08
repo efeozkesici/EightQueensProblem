@@ -8,8 +8,7 @@ import Observer.NotifyAction;
 import Observer.Subject;
 import Observer.Observer;
 
-public class ChessPanel extends JPanel implements Observer{
-
+public class ChessPanel extends JPanel implements Observer {
     private static final long serialVersionUID = -3750323525250432419L;
     private final Field[][] fields;
     private JPanel panel = new JPanel(new GridLayout(8, 8));
@@ -63,3 +62,4 @@ public class ChessPanel extends JPanel implements Observer{
         showSolution(s.getCurrentPositions());
     }
 }
+
